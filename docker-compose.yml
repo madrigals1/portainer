@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  portainer:
+    image: portainer/portainer-ce:2.0.0
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    networks:
+      - proxy
+    environment:
+      VIRTUAL_HOST: ${SSL_DOMAIN}
+      VIRTUAL_PORT: ${UI_PORT}
+      LETSENCRYPT_HOST: ${SSL_DOMAIN}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+    ports:
+      - "${UI_PORT}:9000"
+      - "${SSH_PORT}:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer_data:/data
+
+networks:
+  proxy:
+    external:
+      name: ${NGINX_PROXY_NETWORK}
