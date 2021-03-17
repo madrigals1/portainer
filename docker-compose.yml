@@ -3,6 +3,7 @@ version: "3"
 services:
   portainer:
     image: portainer/portainer-ce:2.0.0
+    container_name: portainer
     command: -H unix:///var/run/docker.sock
     restart: always
     networks:
@@ -11,7 +12,6 @@ services:
       VIRTUAL_HOST: ${SSL_DOMAIN}
       VIRTUAL_PORT: ${UI_PORT}
       LETSENCRYPT_HOST: ${SSL_DOMAIN}
-      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
     ports:
       - "${UI_PORT}:9000"
       - "${SSH_PORT}:8000"
