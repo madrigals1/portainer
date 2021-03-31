@@ -7,7 +7,7 @@ services:
     command: -H unix:///var/run/docker.sock
     restart: always
     networks:
-      - proxy
+      - https
     environment:
       VIRTUAL_HOST: ${SSL_DOMAIN}
       VIRTUAL_PORT: ${UI_PORT}
@@ -20,6 +20,6 @@ services:
       - ./portainer_data:/data
 
 networks:
-  proxy:
+  https:
     external:
-      name: ${NGINX_PROXY_NETWORK}
+      name: ${HTTPS_NETWORK}
