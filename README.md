@@ -23,7 +23,7 @@ cp .env.example .env
 Environment variables:
 - `SSH_PORT` - port, from which portainer will be available through SSH.
 - `SSL_DOMAIN` - domain, on which portainer instance will be available through internet.
-- `HTTPS_NETWORK` - network, in which our HTTPS server (Dockerized Nginx) will be running.
+- `HTTPS_NETWORK` - network, in which our HTTPS server (Dockerized Nginx) should be running.
 - `UI_PORT` - port, on which Web UI will be running.
 
 ```dotenv
