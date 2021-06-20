@@ -1,6 +1,8 @@
 # Portainer
 
-Portainer is a lightweight management UI which allows you to easily manage your different Docker environments (Docker hosts or Swarm clusters). This repo includes my settings to use it on my server.
+Portainer is a lightweight management UI which allows you to easily manage your different Docker environments (Docker hosts or Swarm clusters).
+
+This repo includes my settings to use it on my server.
 
 ## Prerequisites
 
