@@ -6,6 +6,7 @@ services:
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     restart: always
+    # Remove networks section, if you don't use this service over HTTPS
     networks:
       - https
     environment:
@@ -19,6 +20,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer_data:/data
 
+# Remove networks section, if you don't use this service over HTTPS
 networks:
   https:
     external:

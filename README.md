@@ -40,6 +40,8 @@ UI_PORT=9000
 
 Create network with the name, that we have in `HTTPS_NETWORK` environment variable.
 
+> This step is not required, if you don't use this service over HTTPS
+
 ```shell script
 docker network create https_network
 ```
