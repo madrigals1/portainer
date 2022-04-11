@@ -6,13 +6,8 @@ services:
     container_name: portainer
     command: -H unix:///var/run/docker.sock
     restart: always
-    # Remove networks section, if you don't use this service over HTTPS
     networks:
       - https
-    environment:
-      VIRTUAL_HOST: ${SSL_DOMAIN}
-      VIRTUAL_PORT: ${UI_PORT}
-      LETSENCRYPT_HOST: ${SSL_DOMAIN}
     ports:
       - "${UI_PORT}:9000"
       - "${SSH_PORT}:8000"
@@ -20,7 +15,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer_data:/data
 
-# Remove networks section, if you don't use this service over HTTPS
 networks:
   https:
     external:

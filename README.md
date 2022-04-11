@@ -8,7 +8,7 @@ This repo includes my settings to use it on my server.
 
 Make sure you have installed these:
 - [Docker and Docker Compose](https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04) - Will install all the required packages and software.
-- (Optional) [Dockerized Nginx with SSL](https://github.com/madrigals1/nginx) - Will generate SSL certificates and make the app accessible through `SSL_DOMAIN`, that is set inside `.env`.
+- (Optional) [Dockerized Nginx](https://github.com/madrigals1/nginx_proxy_manager) - Will generate SSL certificates and make the app accessible through `HTTPS_NETWORK`, that is set inside `.env`.
 
 ## Installation
 
@@ -22,8 +22,7 @@ cp .env.example .env
 
 Environment variables:
 - `SSH_PORT` - port, from which portainer will be available through SSH.
-- `SSL_DOMAIN` - domain, on which portainer instance will be available through internet.
-- `HTTPS_NETWORK` - network, in which our HTTPS server (Dockerized Nginx) should be running.
+- `HTTPS_NETWORK` - network, in which **Dockerized Nginx** is running.
 - `UI_PORT` - port, on which Web UI will be running.
 
 ```dotenv
@@ -68,7 +67,7 @@ docker-compose down
 
 ## Usage
 
-- Access **Portainer** through `SSL_DOMAIN` or `localhost:UI_PORT` from browser.
+- Access **Portainer** through `localhost:${UI_PORT}` from browser or create **SSL Certificate** and **Proxy Host** using [Dockerized Nginx](https://github.com/madrigals1/nginx_proxy_manager)
 
 ## Authors
 - Adi Sabyrbayev [Github](https://github.com/madrigals1), [LinkedIn](https://www.linkedin.com/in/madrigals1/)
