@@ -26,12 +26,8 @@ Environment variables:
 - `UI_PORT` - port, on which Web UI will be running.
 
 ```dotenv
-# Docker settings
 HTTPS_NETWORK=https_network
 SSH_PORT=8000
-
-# Let's encrypt settings
-SSL_DOMAIN=portainer.example.com
 UI_PORT=9000
 ```
 
