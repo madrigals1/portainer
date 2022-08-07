@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services:
   portainer:
@@ -17,5 +17,5 @@ services:
 
 networks:
   https:
-    external:
-      name: ${HTTPS_NETWORK}
+    name: ${HTTPS_NETWORK}
+    external: true
