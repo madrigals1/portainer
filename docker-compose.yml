@@ -28,9 +28,16 @@ services:
     depends_on:
       portainer-init:
         condition: service_completed_successfully
+    networks:
+      - https
 
 volumes:
   portainer_data:
     name: portainer_data
   portainer_pwd:
     name: portainer_pwd
+
+networks:
+  https:
+    name: ${HTTPS_NETWORK}
+    external: true
