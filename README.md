@@ -42,3 +42,7 @@ All ports and the network are **required** (no defaults – compose fails withou
 | `HTTPS_PORT` | Host port for HTTPS UI (`9443`) | `9443` |
 | `HTTPS_NETWORK` | External Docker network name (`external: true`) | `https_network` |
 | `ADMIN_PASSWORD` | Plaintext `admin` password for first init | `changeme123` |
+
+## Authors
+
+- **Adi Sabyrbayev** — [@madrigals1](https://github.com/madrigals1) — Initial work & maintainer
