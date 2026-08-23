@@ -1,0 +1,36 @@
+services:
+  portainer-init:
+    image: busybox:1.36
+    container_name: portainer-init
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+    volumes:
+      - portainer_pwd:/run/secrets
+      - ./entrypoint.sh:/entrypoint.sh:ro
+    entrypoint: ["/entrypoint.sh"]
+    restart: "no"
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "${EDGE_PORT}:8000"   # Edge Agent
+      - "${HTTP_PORT}:9000"   # HTTP UI (legacy)
+      - "${HTTPS_PORT}:9443"  # HTTPS UI
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+      - portainer_pwd:/run/secrets:ro
+    command: --admin-password-file /run/secrets/portainer_password
+    depends_on:
+      portainer-init:
+        condition: service_completed_successfully
+
+volumes:
+  portainer_data:
+    name: portainer_data
+  portainer_pwd:
+    name: portainer_pwd
