@@ -12,15 +12,37 @@ Minimal compose to run [Portainer CE](https://www.portainer.io/) with full Docke
 
 ## Quick Start
 
+### 1. Create env file
 ```bash
 cp .env.example .env
-# edit .env -> set EDGE_PORT / HTTP_PORT / HTTPS_PORT / HTTPS_NETWORK / ADMIN_PASSWORD
-docker compose up -d
-docker compose logs -f  # check health
 ```
 
-Open:
+### 2. Configure environment
+Edit `.env` and set all required variables:
+- `EDGE_PORT` / `HTTP_PORT` / `HTTPS_PORT` – host ports
+- `HTTPS_NETWORK` – external Docker network name
+- `ADMIN_PASSWORD` – initial `admin` password
 
+### 3. Create external network (if not exists)
+```bash
+docker network create https_network
+# verify
+docker network ls | grep https_network
+```
+
+### 4. Start Portainer
+```bash
+docker compose up -d
+```
+
+### 5. Verify
+```bash
+docker compose ps
+docker compose logs -f          # follow logs until healthy
+curl -ks https://localhost:9443 | head   # should return HTML 200
+```
+
+### 6. Open UI
 - https://localhost:9443 (HTTPS, self-signed) – `HTTPS_PORT`
 - http://localhost:9000 (HTTP) – `HTTP_PORT`
 
